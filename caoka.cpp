@@ -38,10 +38,12 @@ bool Check()
 
 void Welcome()
 {
-    cout << "**********************************************************" << endl;
-    cout << "                      2020级 操卡统计" << endl;
-    cout << "                       by yqs112358" << endl;
-    cout << "**********************************************************" << endl << endl;
+    cout << endl;
+    cout << "        ==========================================================" << endl;
+    cout << "                              2020级 操卡统计" << endl;
+    cout << "                               by yqs112358" << endl;
+    cout << "        ==========================================================" << endl;
+    cout << "                开源地址：https://github.com/yqs112358/caoka" << endl << endl;
 }
 
 void ReadStudents()
@@ -75,7 +77,8 @@ void GetDateRange()
     string temp;
     while (true)
     {
-        cout << "\n请输入要统计操卡的 >起始< 年月日（如 20200802），输入完毕后请按回车：";
+        cout << endl << "====================================================================" << endl;
+        cout << "[Info] 请输入要统计操卡的 >起始< 年月日（如 20200802），输入完毕后请按回车：";
         cin >> temp;
         if (!CheckFormat(temp))
         {
@@ -88,7 +91,7 @@ void GetDateRange()
 
     while (true)
     {
-        cout << "\n请输入要统计操卡的 >终止< 年月日（如 20200802），输入完毕后请按回车：";
+        cout << "[Info] 请输入要统计操卡的 >终止< 年月日（如 20200808），输入完毕后请按回车：";
         cin >> temp;
         if (!CheckFormat(temp))
         {
@@ -99,7 +102,9 @@ void GetDateRange()
         break;
     }
 
+    cout << endl;
     cout << "[Info] 统计开始日期：" << from << " \t统计结束日期：" << to << endl;
+    Sleep(1000);
 }
 
 void PreProcess()
@@ -116,7 +121,7 @@ string ProcessDateStr(int dat)
     string date;
     try
     {
-        string date = to_string(dat);
+        date = to_string(dat);
     }
     catch (...)
     {
@@ -139,8 +144,8 @@ void ProcessData()
     {
         if (line.empty())
             break;
-
-        cin >> id >> date >> time;
+        istringstream sin(line);
+        sin >> id >> date >> time;
         if (ids.count(id) == 0)
             continue;
 
@@ -167,8 +172,11 @@ void ProcessData()
             if (!signMap[to_string(i) + " " + id])
             {
                 if (++cnt == 10)
+                {
                     cout << endl;
-                cout << studentMap[id] << " ";
+                    cnt = 0;
+                }
+                cout << studentMap[id] << "\t";
             }
         cout << endl << endl;
     }
