@@ -78,7 +78,8 @@ void GetDateRange()
     while (true)
     {
         cout << endl << "====================================================================" << endl;
-        cout << "[Info] 请输入要统计操卡的 >起始< 年月日（如 20200802），输入完毕后请按回车：";
+        cout << "[Info] 请输入要统计操卡的 >起始< 年月日（如 20200802）" << endl; 
+        cout << "[Info] 输入完毕后请按回车：";
         cin >> temp;
         if (!CheckFormat(temp))
         {
@@ -91,7 +92,8 @@ void GetDateRange()
 
     while (true)
     {
-        cout << "[Info] 请输入要统计操卡的 >终止< 年月日（如 20200808），输入完毕后请按回车：";
+        cout << "[Info] 请输入要统计操卡的 >终止< 年月日（如 20200808）";
+        cout << "[Info] 输入完毕后请按回车：";
         cin >> temp;
         if (!CheckFormat(temp))
         {
@@ -155,9 +157,8 @@ void ProcessData()
             cout << "[Info] 正在处理 " << lastDate << " 的数据" << endl;
         }
 
-        //Check
-        if (time < FROM_TIME || time > TO_TIME)
-            continue;
+        //if (time < FROM_TIME || time > TO_TIME)
+        //    continue;
         date.erase(4, 1);
         date.erase(6, 1);
         signMap[date + " " + id] = true;
@@ -181,7 +182,7 @@ void ProcessData()
         cout << endl << endl;
     }
     cout << "[Info] 统计已完成" << endl;
-    cout << "[Info] 提示：对于查出未打操卡的同学，请务必与其取得联系，确认是否因为使用免操卡，或者有其他特殊情况导致记录缺失" << endl;
+    cout << "[Info] 提示：对于查出未打操卡的同学，请务必与其取得联系，确认是否因为使用免操卡，或者有其他特殊情况导致记录缺失" << endl << endl << endl;
 }
 
 int main()
